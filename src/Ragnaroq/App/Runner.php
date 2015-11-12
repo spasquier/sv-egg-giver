@@ -2,10 +2,24 @@
 namespace Ragnaroq\App;
 
 use Ragnaroq\App\Page\HtmlPage;
-use Ragnaroq\View\BaseView;
+use Ragnaroq\Base\BaseController;
+use Ragnaroq\Base\BaseModel;
+use Ragnaroq\Base\BaseView;
+use Symfony\Component\HttpFoundation\Request;
 
 class Runner
 {
+    /** @var  Request */
+    public static $request;
+
+    /**
+     * Runner constructor.
+     */
+    public function __construct()
+    {
+        static::$request = Request::createFromGlobals();
+    }
+
     /**
      * Gets the absolute directory of the app.
      *
@@ -59,21 +73,28 @@ class Runner
      */
     public function start()
     {
-        $page = $_GET['page'];
+        $page = static::$request->get('page');
+        $method = static::$request->getMethod();
         try {
-            if (!empty($page)) {
+            if (!empty($page) && !empty($method)) {
                 $routes = require Runner::getConfigDir() . "/routes.php";
-                foreach($routes as $key => $route){
-                    if ($page == $key) {
-                        $model = $route['model'];
-                        $view = $route['view'];
-                        $controller = $route['controller'];
-                        $action = $route['action'];
-                        break;
+                foreach($routes as $method_key => $route){
+                    if ($method == $method_key) {
+                        foreach ($route as $key => $components) {
+                            if ($page == $key) {
+                                $model = $components['model'];
+                                $view = $components['view'];
+                                $controller = $components['controller'];
+                                $action = $components['action'];
+                                break;
+                            }
+                        }
                     }
                 }
                 if (isset($model, $view, $controller, $action)) {
+                    /** @var BaseModel $routeModel */
                     $routeModel = new $model();
+                    /** @var BaseController $routeController */
                     $routeController = new $controller($routeModel);
                     /** @var BaseView $routeView */
                     $routeView = new $view($routeController, $routeModel);

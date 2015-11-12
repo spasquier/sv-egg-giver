@@ -12,7 +12,21 @@ $actions = array(
  * be executed in each route.
  */
 $routes = array(
-    'example' => $actions['welcome'],
+    'GET' => array(
+        'example' => $actions['welcome'],
+    ),
+    'POST' => array(
+
+    ),
+    'DELETE' => array(
+
+    ),
+    'PUT' => array(
+
+    ),
+    'OPTIONS' => array(
+
+    ),
 );
 
 return $routes;
