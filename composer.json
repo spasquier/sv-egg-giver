@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Ragnaroq\\": "src/Ragnaroq/"
+    }
+  },
+  "require": {
+    "symfony/class-loader": "~2.7.6",
+    "symfony/http-foundation" : "~2.7.6",
+    "illuminate/database": "~5.1.22"
+  }
+}
