@@ -36,19 +36,19 @@ class OAuth2Controller extends BaseController
         $code = $this->request->get('code');
         if (empty($code))
         {
-            $_SESSION['accessToken'] = null;
+            unset($_SESSION['accessToken']);
             $authUrl = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl, array(
                 "scope" => "identity",
                 "state" => "As64xA3ueT6sjxiazAA7278yhs6103jx",
-                "duration" => "permantent"
+                "duration" => "permanent"
             ));
-            header("Location: ".$authUrl);
+            header("Location: " . $authUrl);
             echo "Redirecting...";
             return;
         }
         else
         {
-            if (empty($_SESSION['accessToken'])) {
+            if (!isset($_SESSION['accessToken'])) {
                 $params = array("code" => $this->request->get('code'), "redirect_uri" => $redirectUrl);
                 $response = $client->getAccessToken($accessTokenUrl, "authorization_code", $params);
                 $accessTokenResult = $response["result"];
