@@ -32,7 +32,7 @@ class OAuth2Controller extends BaseController
         $client->setCurlOption(CURLOPT_USERAGENT,$userAgent);
 
         $code = $this->request->get('code');
-        if (empty($code) && !isset($_SESSION['accessTokenResult']))
+        if (empty($code))
         {
             $authUrl = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl,
                 array("scope" => "identity", "state" => "As64xA3ueT6sjxiazAA7278yhs6103jx"));
@@ -41,13 +41,9 @@ class OAuth2Controller extends BaseController
         }
         else
         {
-            if (isset($_SESSION['accessTokenResult'])) {
-                $params = array("code" => $this->request->get('code'), "redirect_uri" => $redirectUrl);
-                $response = $client->getAccessToken($accessTokenUrl, "authorization_code", $params);
-                $accessTokenResult = $response["result"];
-            } else {
-                $accessTokenResult = $_SESSION['accessTokenResult'];
-            }
+            $params = array("code" => $this->request->get('code'), "redirect_uri" => $redirectUrl);
+            $response = $client->getAccessToken($accessTokenUrl, "authorization_code", $params);
+            $accessTokenResult = $response["result"];
 
             $client->setAccessToken($accessTokenResult["access_token"]);
             $client->setAccessTokenType(Client::ACCESS_TOKEN_BEARER);
