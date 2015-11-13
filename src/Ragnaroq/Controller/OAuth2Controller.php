@@ -26,7 +26,7 @@ class OAuth2Controller extends BaseController
         $clientSecret = 'awywHxOLxvEOAmQVKSJmuAS3C5Q';
         $userAgent = 'SVEggGiverApp/0.1 by ragnaroq';
 
-        $redirectUrl = "https://svapp.triparticion.xyz/authorize_callback";
+        $redirectUrl = "http://svapp.triparticion.xyz/authorize_callback";
 
         $client = new Client($clientId, $clientSecret, Client::AUTH_TYPE_AUTHORIZATION_BASIC);
         $client->setCurlOption(CURLOPT_USERAGENT,$userAgent);
