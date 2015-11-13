@@ -22,7 +22,7 @@ class OAuth2Controller extends BaseController
 
         $authorizeUrl = 'https://ssl.reddit.com/api/v1/authorize';
         $accessTokenUrl = 'https://ssl.reddit.com/api/v1/access_token';
-        $clientId = 'sv-egg-giver';
+        $clientId = 'xSDj20h3AKfhxw';
         $clientSecret = 'awywHxOLxvEOAmQVKSJmuAS3C5Q';
         $userAgent = 'SVEggGiverApp/0.1 by ragnaroq';
 
