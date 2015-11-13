@@ -21,54 +21,6 @@ class Runner
     }
 
     /**
-     * Gets the absolute directory of the app.
-     *
-     * @return string
-     */
-    public static function getAppDir()
-    {
-        return dirname(dirname(dirname(__DIR__)));
-    }
-
-    /**
-     * Gets the absolute directory of the configuration for the app.
-     *
-     * @return string
-     */
-    public static function getConfigDir()
-    {
-        return Runner::getAppDir() . "/config";
-    }
-
-    /**
-     * Gets the absolute directory that contains php-html templates
-     *
-     * @return string
-     */
-    public static function getTemplateDir()
-    {
-        return dirname(__DIR__) . "/Template";
-    }
-
-    /**
-     * Generates an array with the MVC set and the specific action that will
-     * be executed when an user access an specific route of this app.
-     *
-     * @param $prefix string Prefix of the classes for the MVC pattern
-     * @param $action string Name of the Controller method that will be executed
-     * @return array
-     */
-    public static function mvcAction($prefix, $action)
-    {
-        return array(
-            'model' => "Ragnaroq\\Model\\" . ucfirst($prefix) . 'Model',
-            'view' => "Ragnaroq\\View\\" . ucfirst($prefix) . 'View',
-            'controller' => "Ragnaroq\\Controller\\" . ucfirst($prefix) . 'Controller',
-            'action' => $action
-        );
-    }
-
-    /**
      * Starts the application
      */
     public function start()
@@ -124,5 +76,53 @@ class Runner
             $page->renderError5xx(500, "Server was destroyed!");
             return;
         }
+    }
+
+    /**
+     * Generates an array with the MVC set and the specific action that will
+     * be executed when an user access an specific route of this app.
+     *
+     * @param $prefix string Prefix of the classes for the MVC pattern
+     * @param $action string Name of the Controller method that will be executed
+     * @return array
+     */
+    public static function mvcAction($prefix, $action)
+    {
+        return array(
+            'model' => "Ragnaroq\\Model\\" . ucfirst($prefix) . 'Model',
+            'view' => "Ragnaroq\\View\\" . ucfirst($prefix) . 'View',
+            'controller' => "Ragnaroq\\Controller\\" . ucfirst($prefix) . 'Controller',
+            'action' => $action
+        );
+    }
+
+    /**
+     * Gets the absolute directory of the app.
+     *
+     * @return string
+     */
+    public static function getAppDir()
+    {
+        return dirname(dirname(dirname(__DIR__)));
+    }
+
+    /**
+     * Gets the absolute directory of the configuration for the app.
+     *
+     * @return string
+     */
+    public static function getConfigDir()
+    {
+        return Runner::getAppDir() . "/config";
+    }
+
+    /**
+     * Gets the absolute directory that contains php-html templates
+     *
+     * @return string
+     */
+    public static function getTemplateDir()
+    {
+        return dirname(__DIR__) . "/Template";
     }
 }

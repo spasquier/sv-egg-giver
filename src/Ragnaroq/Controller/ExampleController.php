@@ -18,7 +18,8 @@ class ExampleController extends BaseController
      * Just set the name and lastname for the ExampleModel
      * that will be showed in the view.
      */
-    public function greet() {
+    public function greet()
+    {
         /** @var ExampleModel $model */
         $model = $this->model;
         $model->name = "Salvador";

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class BaseController
 {
     protected $model;
-    private $request;
+    protected $request;
 
     /**
      * BaseController constructor.
@@ -24,10 +24,5 @@ class BaseController
         $this->request = empty(Runner::$request)
             ? Request::createFromGlobals()
             : Runner::$request;
-    }
-
-    protected function request()
-    {
-        return $this->request;
     }
 }

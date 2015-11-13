@@ -2,23 +2,24 @@
 namespace Ragnaroq\View;
 
 use Ragnaroq\Base\BaseView;
+use Ragnaroq\Model\OAuth2Model;
 
 /**
- * Here you must simply pass data from your model to your view template,
- * but just if you want, the template can be just static HTML.
- *
  * Class OAuth2View
  * @package Ragnaroq\View
  */
-class HomeView extends BaseView
+class OAuth2View extends BaseView
 {
     public function defineTemplate()
     {
-        $this->setTemplate("Home");
+        $this->setTemplate("OAuth2/AuthorizeCallback");
     }
 
     public function output()
     {
+        /** @var OAuth2Model $model */
+        $model = $this->model;
+        $response = $model->response;
         require $this->getTemplate();
     }
 }

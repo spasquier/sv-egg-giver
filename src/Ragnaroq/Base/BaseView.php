@@ -29,7 +29,9 @@ abstract class BaseView
     {
         $this->controller = $controller;
         $this->model = $model;
-        $this->request = Request::createFromGlobals();
+        $this->request = empty(Runner::$request)
+            ? Request::createFromGlobals()
+            : Runner::$request;
         $this->defineTemplate();
     }
 
