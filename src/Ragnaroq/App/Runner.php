@@ -55,26 +55,22 @@ class Runner
                     if (method_exists($routeController, $action)) {
                         $routeController->$action();
                     } else {
-                        $page = new HtmlPage();
-                        $page->renderError5xx(500, "Bad backend configuration!");
+                        HtmlPage::renderError5xx(500, "Bad backend configuration!");
                         return;
                     }
                     $routeView->output();
                 } else {
-                    $page = new HtmlPage();
-                    $page->renderError4xx(404, "Page not found!");
+                    HtmlPage::renderError4xx(404, "Page not found!");
                     return;
                 }
             } else {
-                $page = new HtmlPage();
-                $page->renderError4xx(400, "Bad request!");
+                HtmlPage::renderError4xx(400, "Bad request!");
                 return;
             }
         } catch(\Exception $e) {
             syslog(LOG_ALERT, "[{$e->getCode()}] SVEggGiverApp: Fatal error."
                 . "{$e->getMessage()}. Error trace: {$e->getTraceAsString()}");
-            $page = new HtmlPage();
-            $page->renderError5xx(500, "Server was destroyed!");
+            HtmlPage::renderError5xx(500, "Server was destroyed!");
             return;
         }
     }
