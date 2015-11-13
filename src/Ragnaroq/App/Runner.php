@@ -6,6 +6,7 @@ use Ragnaroq\Base\BaseController;
 use Ragnaroq\Base\BaseModel;
 use Ragnaroq\Base\BaseView;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class Runner
 {
@@ -17,8 +18,12 @@ class Runner
      */
     public function __construct()
     {
-        session_start();
         static::$request = Request::createFromGlobals();
+        if (!static::$request->hasSession()) {
+            $session = new Session();
+            $session->start();
+            static::$request->setSession($session);
+        }
     }
 
     /**

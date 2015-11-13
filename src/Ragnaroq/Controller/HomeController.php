@@ -44,9 +44,4 @@ class HomeController extends BaseController
             exit;
         }
     }
-
-    public function afterAction()
-    {
-
-    }
 }
