@@ -4,9 +4,9 @@
  * for each defined action in this array.
  */
 $actions = array(
-    'index' => \Ragnaroq\App\Runner::mvcAction('home', 'index'),
-    'welcome' => \Ragnaroq\App\Runner::mvcAction('example', 'greet'),
-    'authorize' => \Ragnaroq\App\Runner::mvcAction('oauth2', 'authorizeCallback'),
+    'index' => \Ragnaroq\App\Runner::mvcAction('Home', 'index'),
+    'welcome' => \Ragnaroq\App\Runner::mvcAction('Example', 'greet'),
+    'authorize' => \Ragnaroq\App\Runner::mvcAction('OAuth2', 'authorizeCallback'),
 );
 
 /**

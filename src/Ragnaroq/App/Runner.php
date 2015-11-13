@@ -89,9 +89,9 @@ class Runner
     public static function mvcAction($prefix, $action)
     {
         return array(
-            'model' => "Ragnaroq\\Model\\" . ucfirst($prefix) . 'Model',
-            'view' => "Ragnaroq\\View\\" . ucfirst($prefix) . 'View',
-            'controller' => "Ragnaroq\\Controller\\" . ucfirst($prefix) . 'Controller',
+            'model' => "Ragnaroq\\Model\\" . $prefix . 'Model',
+            'view' => "Ragnaroq\\View\\" . $prefix . 'View',
+            'controller' => "Ragnaroq\\Controller\\" . $prefix . 'Controller',
             'action' => $action
         );
     }
