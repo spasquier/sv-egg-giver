@@ -2,6 +2,7 @@
 namespace Ragnaroq\Base;
 
 use Ragnaroq\App\Runner;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class BaseView
@@ -15,6 +16,8 @@ abstract class BaseView
     protected $controller;
     /** @var  string */
     private $template;
+    /** @var  Request */
+    protected $request;
 
     /**
      * BaseView constructor.
@@ -26,6 +29,7 @@ abstract class BaseView
     {
         $this->controller = $controller;
         $this->model = $model;
+        $this->request = Request::createFromGlobals();
         $this->defineTemplate();
     }
 
