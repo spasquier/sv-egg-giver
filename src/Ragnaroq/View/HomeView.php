@@ -2,6 +2,7 @@
 namespace Ragnaroq\View;
 
 use Ragnaroq\Base\BaseView;
+use OAuth2\Client;
 
 /**
  * Here you must simply pass data from your model to your view template,
@@ -35,7 +36,7 @@ class HomeView extends BaseView
 
         $redirectUrl = "https://svapp.triparticion.xyz/authorize_callback";
         
-        $client = new \OAuth2\Client($clientId, $clientSecret, \OAuth2\Client::AUTH_TYPE_AUTHORIZATION_BASIC);
+        $client = new Client($clientId, $clientSecret, Client::AUTH_TYPE_AUTHORIZATION_BASIC);
         $client->setCurlOption(CURLOPT_USERAGENT,$userAgent);
 
         $code = $this->request->get('code');
@@ -53,7 +54,7 @@ class HomeView extends BaseView
 
             $accessTokenResult = $response["result"];
             $client->setAccessToken($accessTokenResult["access_token"]);
-            $client->setAccessTokenType(\OAuth2\Client::ACCESS_TOKEN_BEARER);
+            $client->setAccessTokenType(Client::ACCESS_TOKEN_BEARER);
 
             $response = $client->fetch("https://oauth.reddit.com/api/v1/me.json");
 
