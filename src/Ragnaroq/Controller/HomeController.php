@@ -40,6 +40,7 @@ class HomeController extends BaseController
         // If there isn't an access token in the Session start a new OAuth2 flow
         $accessTokenResult = $this->session->read('accessToken');
         if (empty($accessTokenResult)) {
+            $this->session->store('returnUrl', $this->request->getUri());
             header('Location: /authorize_callback');
             exit;
         }

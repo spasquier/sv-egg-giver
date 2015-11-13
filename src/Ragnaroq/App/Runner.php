@@ -19,7 +19,7 @@ class Runner
     public function __construct()
     {
         static::$request = Request::createFromGlobals();
-        if (!static::$request->hasSession()) {
+        if (!static::$request->hasPreviousSession()) {
             $session = new Session();
             $session->start();
             static::$request->setSession($session);
@@ -63,22 +63,18 @@ class Runner
                         $routeController->afterAction();
                     } else {
                         HtmlPage::renderError5xx(500, "Bad backend configuration!");
-                        return;
                     }
                     $routeView->output();
                 } else {
                     HtmlPage::renderError4xx(404, "Page not found!");
-                    return;
                 }
             } else {
                 HtmlPage::renderError4xx(400, "Bad request!");
-                return;
             }
         } catch(\Exception $e) {
             syslog(LOG_ALERT, "[{$e->getCode()}] SVEggGiverApp: Fatal error."
                 . "{$e->getMessage()}. Error trace: {$e->getTraceAsString()}");
             HtmlPage::renderError5xx(500, "Server was destroyed!");
-            return;
         }
     }
 

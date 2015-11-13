@@ -46,7 +46,6 @@ class OAuth2Controller extends BaseController
                 'duration' => 'permanent'
             ));
             header('Location: ' . $authUrl);
-            return;
         }
         else
         {

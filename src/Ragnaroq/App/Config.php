@@ -12,7 +12,7 @@ class Config
      */
     private function __construct()
     {
-        $this->settings = Runner::getConfigDir() . "/settings.php";
+        $this->settings = require Runner::getConfigDir() . "/settings.php";
     }
 
     /**
