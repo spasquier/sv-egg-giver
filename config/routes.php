@@ -6,6 +6,7 @@
 $actions = array(
     'index' => \Ragnaroq\App\Runner::mvcAction('home', 'index'),
     'welcome' => \Ragnaroq\App\Runner::mvcAction('example', 'greet'),
+    'authorize' => \Ragnaroq\App\Runner::mvcAction('oauth2', 'authorizeCallback'),
 );
 
 /**
@@ -16,6 +17,7 @@ $routes = array(
     'GET' => array(
         'homepage' => $actions['index'],
         'example' => $actions['welcome'],
+        'authorize_callback' => $actions['authorize'],
     ),
     'POST' => array(
 
