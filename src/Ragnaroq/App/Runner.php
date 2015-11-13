@@ -73,7 +73,7 @@ class Runner
      */
     public function start()
     {
-        $page = static::$request->get('page');
+        $page = static::$request->get('page', 'homepage');
         $method = static::$request->getMethod();
         try {
             if (!empty($page) && !empty($method)) {

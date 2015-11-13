@@ -4,6 +4,7 @@
  * for each defined action in this array.
  */
 $actions = array(
+    'index' => \Ragnaroq\App\Runner::mvcAction('home', 'index'),
     'welcome' => \Ragnaroq\App\Runner::mvcAction('example', 'greet'),
 );
 
@@ -13,6 +14,7 @@ $actions = array(
  */
 $routes = array(
     'GET' => array(
+        'homepage' => $actions['index'],
         'example' => $actions['welcome'],
     ),
     'POST' => array(
