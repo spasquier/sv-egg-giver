@@ -17,6 +17,7 @@ class Runner
      */
     public function __construct()
     {
+        session_start();
         static::$request = Request::createFromGlobals();
     }
 
