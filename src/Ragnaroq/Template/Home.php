@@ -6,5 +6,8 @@
 </head>
 <body>
 <h1>In construction...</h1>
+<pre>
+    <?php print_r($response); ?>
+</pre>
 </body>
 </html>

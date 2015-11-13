@@ -19,6 +19,7 @@ class HomeView extends BaseView
 
     public function output()
     {
+        $response = $this->model->response;
         require $this->getTemplate();
     }
 }

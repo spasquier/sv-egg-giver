@@ -9,5 +9,5 @@ use Ragnaroq\Base\BaseModel;
  */
 class OAuth2Model extends BaseModel
 {
-    public $response;
+
 }

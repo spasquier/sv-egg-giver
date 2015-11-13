@@ -5,7 +5,6 @@
     <title>Shiny Value Egg Giveaway-er OAuth2 Callback</title>
 </head>
 <body>
-    <strong>Response for fetch me.json:</strong>
-    <pre><?php print_r($response) ?></pre>
+    <strong>Redirecting you as part of the OAuth2 authentication process...</strong>
 </body>
 </html>

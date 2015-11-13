@@ -11,5 +11,5 @@ use Ragnaroq\Base\BaseModel;
  */
 class HomeModel extends BaseModel
 {
-
+    public $response;
 }

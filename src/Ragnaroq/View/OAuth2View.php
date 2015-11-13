@@ -19,7 +19,6 @@ class OAuth2View extends BaseView
     {
         /** @var OAuth2Model $model */
         $model = $this->model;
-        $response = $model->response;
         require $this->getTemplate();
     }
 }

@@ -53,7 +53,9 @@ class Runner
                     /** @var BaseView $routeView */
                     $routeView = new $view($routeController, $routeModel);
                     if (method_exists($routeController, $action)) {
+                        $routeController->beforeAction();
                         $routeController->$action();
+                        $routeController->afterAction();
                     } else {
                         HtmlPage::renderError5xx(500, "Bad backend configuration!");
                         return;
