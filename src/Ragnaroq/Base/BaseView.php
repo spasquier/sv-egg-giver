@@ -46,7 +46,7 @@ class BaseView
      */
     public function getBaseTemplate()
     {
-        return Runner::getTemplateDir() . "Base.php";
+        return Runner::getTemplateDir() . "/Base.php";
     }
 
     /**
