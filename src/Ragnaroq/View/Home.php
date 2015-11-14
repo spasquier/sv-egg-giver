@@ -7,7 +7,7 @@
     </tr>
     <tr>
         <td><strong>Registered (UTC)</strong></td>
-        <td><?= date('Y-m-d H:i:s', strtotime($me['created_utc'])) ?></td>
+        <td><?= date('Y-m-d H:i:s', $me['created_utc']) ?></td>
     </tr>
     <tr>
         <td><strong>Link Karma</strong></td>
