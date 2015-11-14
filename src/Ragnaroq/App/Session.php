@@ -1,5 +1,5 @@
 <?php
-namespace Ragnaroq\App\Auth;
+namespace Ragnaroq\App;
 
 use OAuth2\Client;
 use Ragnaroq\App\Config;

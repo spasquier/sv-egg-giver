@@ -32,7 +32,8 @@ class HomeController extends BaseController
         $client->setAccessTokenType(Client::ACCESS_TOKEN_BEARER);
 
         // Request user response
-        $this->model->response = json_decode($client->fetch("https://oauth.reddit.com/api/v1/me.json"));
+        $response = $client->fetch("https://oauth.reddit.com/api/v1/me.json");
+        $this->view->render("Home", array('me' => $response['result']));
     }
 
     public function beforeAction()

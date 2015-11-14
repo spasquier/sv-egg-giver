@@ -7,11 +7,5 @@ namespace Ragnaroq\Base;
  */
 abstract class BaseModel
 {
-    /**
-     * BaseModel constructor.
-     */
-    public function __construct()
-    {
 
-    }
 }
