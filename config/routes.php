@@ -15,9 +15,9 @@ $actions = array(
  */
 $routes = array(
     'GET' => array(
-        'homepage' => $actions['index'],
-        'example' => $actions['welcome'],
-        'authorize_callback' => $actions['authorize'],
+        '/' => $actions['index'],
+        '/example' => $actions['welcome'],
+        '/authorize_callback' => $actions['authorize'],
     ),
     'POST' => array(
 

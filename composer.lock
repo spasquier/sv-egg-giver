@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01a861f4249dcc54e2120abb96ba2f95",
-    "content-hash": "92188568f7df33bcc54d3cc131b1cf6e",
+    "hash": "c44df38b1e2f05a7d876c3fc8f598c89",
     "packages": [
         {
             "name": "adoy/oauth2",
