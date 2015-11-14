@@ -33,7 +33,10 @@ class HomeController extends BaseController
 
         // Request user response
         $response = $client->fetch("https://oauth.reddit.com/api/v1/me.json");
-        $this->view->render("Home", array('me' => $response['result']));
+        $this->view->render("Home", array(
+            'me' => $response['result'],
+            'pageTitle' => 'Reddit profile example'
+        ));
     }
 
     public function beforeAction()

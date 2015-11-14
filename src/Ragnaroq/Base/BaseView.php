@@ -12,8 +12,6 @@ class BaseView
 {
     /** @var  BaseModel */
     protected $model;
-    /** @var  string */
-    private $template;
     /** @var  Request */
     protected $request;
 
@@ -36,12 +34,20 @@ class BaseView
      * @param $templateName string Name of the template inside the base
      * template directory without the extension, for example: "Folder\File",
      * "Folder/Folder/File" or simply "File"
+     * @return string
      */
-    public function setTemplate($templateName)
+    public function getViewTemplate($templateName)
     {
-        $this->template = Runner::getViewDir() . "/$templateName.php";
+        return Runner::getViewDir() . "/$templateName.php";
     }
 
+    /**
+     * Gets the base template
+     */
+    public function getBaseTemplate()
+    {
+        return Runner::getTemplateDir() . "Base.php";
+    }
 
     /**
      * Must output the final HTML page with Model data
@@ -57,9 +63,25 @@ class BaseView
      */
     public function render($viewName, $viewData = array())
     {
-        $model = $this->model;
+        $templateFile = $this->getViewTemplate($viewName);
+        $_viewContent = $this->renderToString($templateFile, $viewData);
         extract($viewData);
-        $this->setTemplate($viewName);
-        require $this->template;
+        require $this->getBaseTemplate();
+    }
+
+    /**
+     * Renders a parsed PHP template to a string
+     *
+     * @param $file string Absolute file path
+     * @param $vars array Variables to be used in the PHP template
+     * @return string
+     */
+    private function renderToString($file, $vars = null)
+    {
+        if (is_array($vars) && !empty($vars))
+            extract($vars);
+        ob_start();
+        include $file;
+        return ob_get_clean();
     }
 }
