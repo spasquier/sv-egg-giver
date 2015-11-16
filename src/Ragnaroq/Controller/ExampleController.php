@@ -20,9 +20,8 @@ class ExampleController extends BaseController
      */
     public function greet()
     {
-        /** @var ExampleModel $model */
-        $model = $this->model;
-        $model->name = "Salvador";
-        $model->lastName = "Pasquier";
+        $this->model->name = "Salvador";
+        $this->model->lastname = "Pasquier";
+        $this->view->render("Example/Welcome");
     }
 }
