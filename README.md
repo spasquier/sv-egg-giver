@@ -1,4 +1,4 @@
-# This thing will help /r/SVExchange giveaway-ers
+# Test app that logins to reddit account using OAuth2
 
-Thanks to Callum Hopkins for the good idea on
+Also implements MVC to organize code, following this guide:
 [how to implement the MVC pattern in PHP](http://www.sitepoint.com/the-mvc-pattern-and-php-2/).
